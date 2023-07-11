@@ -83,7 +83,7 @@ class Auth extends BaseController
         if ($user) {
             //cek password
             //jika salah arahkan lagi ke halaman login
-            if ($user['password'] != md5($data['password']) . $user['salt']) {
+            if ($user['password'] != md5($data['password'])) {
                 session()->setFlashdata('password', 'Password salah');
                 return redirect()->to('/auth/login');
             } else {
@@ -95,7 +95,7 @@ class Auth extends BaseController
                 ];
                 // dd($sessLogin);
                 $this->session->set($sessLogin);
-                return redirect()->to('/user');
+                return redirect()->to('Admin/');
             }
         } else {
             //jika username tidak ditemukan, balikkan ke halaman login
