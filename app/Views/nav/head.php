@@ -8,6 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="<?= base_url('src/') ?>css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -70,7 +73,7 @@
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Harga Ikan</a>
+                                        <a class="nav-link" href="<?= base_url('Con_hargaikan') ?>">Harga Ikan</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Pembenihan</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Pembesaran</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Perikanan tangkap</a>
