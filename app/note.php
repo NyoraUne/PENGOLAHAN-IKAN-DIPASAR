@@ -21,3 +21,22 @@
         </tr>
     </tbody>
 </table>
+
+/* ---------------------------------- basic --------------------------------- */
+
+<?= $this->include('nav/head'); ?>
+<?= $this->include('nav/foot'); ?>
+
+/* --------------------------- Script Confirmation -------------------------- */
+onclick="return confirmAction(event)"
+<script>
+function confirmAction(event) {
+    var confirmation = confirm("Apakah Anda yakin untuk menghapus data?");
+
+    if (!confirmation) {
+        event.preventDefault();
+    }
+
+    return confirmation;
+}
+</script>

@@ -45,7 +45,7 @@ class Con_pasar extends BaseController
 
         $data = [
             'nama_pasar' => $nama_pasar,
-            'date' => $input['tgl'],
+            'tanggal' => $input['tgl'],
             'nama_penjual' => $nama_penjual,
         ];
 
@@ -60,5 +60,47 @@ class Con_pasar extends BaseController
         }
 
         return redirect()->back();
+    }
+    function hapus_pasar($id)
+    {
+        $status = $this->Mod_pasar->delete($id);
+
+        if ($status) {
+            // Jika data berhasil disimpan
+            $this->session->setFlashdata('success_hapus', 'Data berhasil disimpan.');
+        } else {
+            // Jika data gagal disimpan
+            $this->session->setFlashdata('error_hapus', 'Terjadi kesalahan saat menyimpan data.');
+        }
+        return redirect()->back();
+    }
+    function edit_pasar($id)
+    {
+        $var = $this->Mod_pasar->where('id_pasar', $id)->first();
+        $data = [
+            'title' => 'Edit Form Pasar | Wildan',
+            'head' => 'Form Edit Pasar.',
+            'type' => 'Form Edit Pasar ID. ' . $var['id_pasar'],
+            'pasar' => $var,
+        ];
+        echo view('admin/pasar/edit_pasar', $data);
+    }
+    function simpan_edit_pasar($id)
+    {
+        $input = $this->request->getPost();
+        $data = [
+            'nama_pasar' => $input['nama_pasar'],
+            'nama_penjual' => $input['nama_penjual'],
+            'tanggal' => $input['tgl'],
+        ];
+        $status = $this->Mod_pasar->update($id, $data);
+        if ($status) {
+            // Jika data berhasil disimpan
+            $this->session->setFlashdata('success_edit', 'Data berhasil disimpan.');
+        } else {
+            // Jika data gagal disimpan
+            $this->session->setFlashdata('error_edit', 'Terjadi kesalahan saat menyimpan data.');
+        }
+        return redirect()->to('Con_pasar/index');
     }
 }
