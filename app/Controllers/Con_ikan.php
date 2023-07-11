@@ -63,4 +63,45 @@ class Con_ikan extends BaseController
 
         return redirect()->back();
     }
+    function hapus_ikan($id)
+    {
+        $status = $this->Mod_ikan->delete($id);
+        if ($status) {
+            // Jika data berhasil disimpan
+            $this->session->setFlashdata('success_hapus', 'Data berhasil disimpan.');
+        } else {
+            // Jika data gagal disimpan
+            $this->session->setFlashdata('error_hapu', 'Terjadi kesalahan saat menyimpan data.');
+        }
+        return redirect()->back();
+    }
+    function edit_ikan($id)
+    {
+        $var = $this->Mod_ikan->where('id_ikan', $id)->first();
+        $data = [
+            'title' => 'Edit Form ikan | Wildan',
+            'head' => 'Form Edit ikan.',
+            'type' => 'Form Edit ikan ID. ' . $var['id_ikan'],
+            'ikan' => $var,
+        ];
+        echo view('admin/ikan/edit_ikan', $data);
+    }
+    function simpan_edit_ikan($id)
+    {
+        $input = $this->request->getPost();
+        $data = [
+            'nama_ikan' => $input['nama_ikan'],
+            'habitat' => $input['habitat'],
+            'deskripsi_ikan' => $input['deskripsi_ikan'],
+        ];
+        $status = $this->Mod_ikan->update($id, $data);
+        if ($status) {
+            // Jika data berhasil disimpan
+            $this->session->setFlashdata('success_edit', 'Data berhasil disimpan.');
+        } else {
+            // Jika data gagal disimpan
+            $this->session->setFlashdata('error_edit', 'Terjadi kesalahan saat menyimpan data.');
+        }
+        return redirect()->to('Con_ikan/index');
+    }
 }
