@@ -8,9 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="<?= base_url('src/') ?>css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- select2 -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+
+    <link href="<?= base_url('src/'); ?>css/select2.css" rel="stylesheet" />
+    <link href="<?= base_url('src/'); ?>css/select2-theme.css" rel="stylesheet" />
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -22,8 +25,8 @@
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                <input type="text" name="time" id="time" class="form-control" disabled>
+                <span class="input-group-text"><i class="fa-solid fa-clock"></i></span>
             </div>
         </form>
         <!-- Navbar-->

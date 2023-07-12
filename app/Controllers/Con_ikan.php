@@ -71,7 +71,7 @@ class Con_ikan extends BaseController
             $this->session->setFlashdata('success_hapus', 'Data berhasil disimpan.');
         } else {
             // Jika data gagal disimpan
-            $this->session->setFlashdata('error_hapu', 'Terjadi kesalahan saat menyimpan data.');
+            $this->session->setFlashdata('error_hapus', 'Terjadi kesalahan saat menyimpan data.');
         }
         return redirect()->back();
     }
