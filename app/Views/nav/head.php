@@ -59,6 +59,7 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="<?= base_url('Con_ikan') ?>">Data Ikan</a>
+                                <a class="nav-link" href="<?= base_url('Con_user') ?>">Data User</a>
                                 <a class="nav-link" href="<?= base_url('Con_pasar') ?>">Data Pasar</a>
                             </nav>
                         </div>

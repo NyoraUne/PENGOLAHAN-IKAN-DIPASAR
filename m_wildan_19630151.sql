@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 10, 2023 at 05:27 PM
+-- Generation Time: Jul 17, 2023 at 08:07 PM
 -- Server version: 8.0.33-0ubuntu0.22.04.2
 -- PHP Version: 8.1.2-1ubuntu2.13
 
@@ -46,8 +46,17 @@ CREATE TABLE `tb_harga_ikan` (
   `id_pasar` int DEFAULT NULL,
   `id_ikan` int DEFAULT NULL,
   `harga` int DEFAULT NULL,
-  `volume` int DEFAULT NULL
+  `volume` int DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_harga_ikan`
+--
+
+INSERT INTO `tb_harga_ikan` (`id_harga_ikan`, `id_pasar`, `id_ikan`, `harga`, `volume`, `created_at`, `update_at`) VALUES
+(4, 3, 2, 15000, 25, '2023-07-12 06:37:55', '2023-07-12 06:38:03');
 
 -- --------------------------------------------------------
 
@@ -110,7 +119,9 @@ CREATE TABLE `tb_pasar` (
 --
 
 INSERT INTO `tb_pasar` (`id_pasar`, `nama_pasar`, `tanggal`, `nama_penjual`, `created_at_pasar`) VALUES
-(1, 'Pasar raya bogor', '0000-00-00', 'Pak yasin', '2023-07-10 09:01:48');
+(3, 'Pasar baru', '2023-07-11', 'Pak Lanang', '2023-07-11 06:38:19'),
+(4, 'Pasar raya bogor', '2023-07-11', 'Bu Wedok', '2023-07-11 07:17:10'),
+(5, 'Pasar baru', '2023-07-11', 'Mas Bayu', '2023-07-11 07:17:32');
 
 -- --------------------------------------------------------
 
@@ -267,13 +278,13 @@ ALTER TABLE `tb_Berita`
 -- AUTO_INCREMENT for table `tb_harga_ikan`
 --
 ALTER TABLE `tb_harga_ikan`
-  MODIFY `id_harga_ikan` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_harga_ikan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_ikan`
 --
 ALTER TABLE `tb_ikan`
-  MODIFY `id_ikan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ikan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_login`
@@ -285,7 +296,7 @@ ALTER TABLE `tb_login`
 -- AUTO_INCREMENT for table `tb_pasar`
 --
 ALTER TABLE `tb_pasar`
-  MODIFY `id_pasar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pasar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_pembenihan`

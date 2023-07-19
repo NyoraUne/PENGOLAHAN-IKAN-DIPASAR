@@ -10,12 +10,12 @@ class Mod_pasar extends Model
     protected $primaryKey = 'id_pasar';
     protected $allowedFields = [
         'nama_pasar',
-        'tanggal',
-        'nama_penjual',
+        'alamat_pasar',
+        'deskripsi_pasar',
     ];
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at_pasar';
+    protected $createdField  = 'created_at';
     protected $updatedField  = '';
     protected $deletedField  = '';
 }

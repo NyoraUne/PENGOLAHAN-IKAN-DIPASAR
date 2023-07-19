@@ -30,13 +30,19 @@
 /* --------------------------- Script Confirmation -------------------------- */
 onclick="return confirmAction(event)"
 <script>
-function confirmAction(event) {
-    var confirmation = confirm("Apakah Anda yakin untuk menghapus data?");
+    function confirmAction(event) {
+        var confirmation = confirm("Apakah Anda yakin untuk menghapus data?");
 
-    if (!confirmation) {
-        event.preventDefault();
+        if (!confirmation) {
+            event.preventDefault();
+        }
+
+        return confirmation;
     }
-
-    return confirmation;
-}
 </script>
+
+Nama :
+<div class="input-group mb-2">
+    <span class="input-group-text">@</span>
+    <input name="" type="text" class="form-control">
+</div>

@@ -2,17 +2,17 @@
 
 namespace App\Controllers;
 
-use App\Models\Mod_user;
+use App\Models\Mod_login;
 
 class Auth extends BaseController
 {
     protected $session;
-    protected $Mod_user;
+    protected $Mod_login;
     protected $validation;
     public function __construct()
     {
         //membuat user model untuk konek ke database 
-        $this->Mod_user = new Mod_user();
+        $this->Mod_login = new Mod_login();
 
         //meload validation
         $this->validation = \Config\Services::validation();
@@ -59,7 +59,7 @@ class Auth extends BaseController
         $password = md5($data['password']);
 
         //masukan data ke database
-        $this->Mod_user->insert([
+        $this->Mod_login->insert([
             'username' => $data['username'],
             'password' => $password,
             'hak_akses' => 1 //1 = admin, 2 = user
@@ -77,7 +77,7 @@ class Auth extends BaseController
         // dd($data);
 
         //ambil data user di database yang usernamenya sama 
-        $user = $this->Mod_user->where('username', $data['username'])->first();
+        $user = $this->Mod_login->where('username', $data['username'])->first();
 
         //cek apakah username ditemukan
         if ($user) {
