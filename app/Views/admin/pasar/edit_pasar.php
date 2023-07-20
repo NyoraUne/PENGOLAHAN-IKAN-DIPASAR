@@ -6,21 +6,21 @@
                 <div class="col">
                     <!-- input data -->
 
-                    Nama Pasar:
+                    Nama Pasar :
                     <div class="input-group mb-2">
                         <input name="nama_pasar" type="text" class="form-control" value="<?= $pasar['nama_pasar']; ?>">
                     </div>
                     <!-- input data -->
-                    Nama Penjual:
+                    Alamat :
                     <div class="input-group mb-2">
-                        <input name="nama_penjual" type="text" class="form-control" value="<?= $pasar['nama_penjual']; ?>">
+                        <input name="alamat_pasar" type="text" class="form-control" value="<?= $pasar['alamat_pasar']; ?>">
                     </div>
                 </div>
                 <div class="col">
                     <!-- input data -->
-                    Tanggal :
+                    Deskripsi :
                     <div class="input-group mb-2">
-                        <input name="tgl" type="date" class="form-control" value="<?= $pasar['tanggal']; ?>">
+                        <input name="deskripsi_pasar" type="text" class="form-control" value="<?= $pasar['deskripsi_pasar']; ?>">
                     </div>
                     <br>
                     <div class="float-end">

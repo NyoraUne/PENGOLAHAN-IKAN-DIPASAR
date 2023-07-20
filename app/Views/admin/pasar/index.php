@@ -9,21 +9,21 @@
                 <form action="<?= base_url('Con_pasar/tambah_pasar') ?>" method="post">
 
                     <!-- Input Data Start -->
-                    Nama Pasar
+                    Nama Pasar :
                     <div class="input-group mb-3">
                         <input name="nama_pasar" type="text" class="form-control" placeholder="Pasar Bojong Rebo..">
                     </div>
                     <!-- Input Data End -->
                     <!-- Input Data Start -->
-                    Tanggal
+                    Alamat :
                     <div class="input-group mb-3">
-                        <input name="tgl" type="date" class="form-control">
+                        <input name="alamat_pasar" type="text" class="form-control">
                     </div>
                     <!-- Input Data End -->
                     <!-- Input Data Start -->
-                    Nama Penjual
+                    Deskripsi :
                     <div class="input-group mb-3">
-                        <input name="nama_penjual" type="text" class="form-control" placeholder="H. Yasin..">
+                        <input name="deskripsi_pasar" type="text" class="form-control" placeholder="H. Yasin..">
                     </div>
                     <!-- Input Data End -->
                     <div class="float-end">
@@ -37,8 +37,8 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Pasar</th>
-                            <th>Tanggal</th>
-                            <th>Nama Penjual</th>
+                            <th>Alamat</th>
+                            <th>Deskripsi</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -48,8 +48,8 @@
                             <tr>
                                 <td><?= $no++; ?></td>
                                 <td><?= $pa['nama_pasar']; ?></td>
-                                <td><?= $pa['tanggal']; ?></td>
-                                <td><?= $pa['nama_penjual']; ?></td>
+                                <td><?= $pa['alamat_pasar']; ?></td>
+                                <td><?= $pa['deskripsi_pasar']; ?></td>
                                 <td>
                                     <a href="<?= base_url('Con_pasar/edit_pasar/' . $pa['id_pasar']) ?>" class="btn btn-outline-info btn-ssm custom-btn">Edit</a>
                                     <a href="<?= base_url('Con_pasar/hapus_pasar/' . $pa['id_pasar']) ?>" class="btn btn-outline-danger btn-ssm custom-btn" onclick="return confirmAction(event)">Hapus</a>

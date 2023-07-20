@@ -32,7 +32,7 @@ class Con_ikan extends BaseController
         $data = [
             'title' => 'Nama',
             'head' => 'Form Input, Edit Dan Hapus Data Ikan.',
-            'type' => 'Ikan',
+            'type' => 'Form Ikan',
             'ikan' => $ikan,
         ];
 

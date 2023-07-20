@@ -20,6 +20,7 @@
  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
  <script src="<?= base_url('src/') ?>js/datatables-simple-demo.js"></script>
  <script src="<?= base_url('src/') ?>js/tinymce/tinymce.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
 
  <script>
      $(document).ready(function() {
@@ -47,6 +48,22 @@
 
          // Memperbarui tanggal dan waktu setiap detik
          setInterval(updateDateTime, 1000);
+     });
+
+     jQuery(document).ready(function($) {
+         $('#select').select2({
+             theme: 'bootstrap-5',
+             placeholder: "pilih Data"
+         });
+         $('#select1').select2({
+             theme: 'bootstrap-5',
+             placeholder: "pilih Data"
+         });
+         $('#select2').select2({
+             theme: 'bootstrap-5',
+             placeholder: "pilih Data"
+         });
+
      });
  </script>
 

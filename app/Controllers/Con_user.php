@@ -33,9 +33,9 @@ class Con_user extends BaseController
         $user = $this->Mod_user->findAll();
 
         $data = [
-            'title' => 'Dashboard Admin',
-            'head' => 'Form Input User.',
-            'type' => 'Input User',
+            'title' => 'Wildan - 19630151',
+            'head' => 'Form Input, Edit, Dan Hapus User.',
+            'type' => 'Form User',
             'user' => $user,
         ];
 
@@ -93,13 +93,13 @@ class Con_user extends BaseController
         $i = $user['slug'];
         // dd($i);
         $bread = "
-        Detail User : $i
+        Form Edit User : $i
         ";
 
         $username['username'] = session('username');
 
         $data = [
-            'title' => 'Dashboard Admin',
+            'title' => 'Wildan - 19630151',
             'head' => 'Form Edit User.',
             'type' => $bread,
             'username' => $username,
