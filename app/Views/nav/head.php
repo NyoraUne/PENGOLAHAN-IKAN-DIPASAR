@@ -79,8 +79,8 @@
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="<?= base_url('Con_hargaikan') ?>">Harga Ikan</a>
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Pembenihan</a>
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Pembesaran</a>
+                                        <a class="nav-link" href="<?= base_url('Con_pembenihan') ?>">Pembenihan</a>
+                                        <a class="nav-link" href="<?= base_url('Con_pembesaran') ?>">Pembesaran</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Perikanan tangkap</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Pengolahan Ikan</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Keluar Masuk Ikan</a>
