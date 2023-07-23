@@ -22,3 +22,12 @@ window.addEventListener('DOMContentLoaded', event => {
         new simpleDatatables.DataTable(datatablesSimple);
     }
 });
+window.addEventListener('DOMContentLoaded', event => {
+    const datatablesSimple = document.getElementById('polos');
+    if (datatablesSimple) {
+        new simpleDatatables.DataTable(datatablesSimple, {
+            searchable: false,
+            paging: false
+        });
+    }
+});
