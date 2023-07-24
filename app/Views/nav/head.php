@@ -98,7 +98,7 @@
                                         <a class="nav-link" href="<?= base_url('Lap_pasar') ?>">Laporan Data Pasar</a>
                                         <a class="nav-link" href="<?= base_url('Lap_penjual') ?>">Laporan Data Penjual</a>
                                         <a class="nav-link" href="<?= base_url('Lap_hikan') ?>">Laporan Harga Ikan</a>
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Pembenihan</a>
+                                        <a class="nav-link" href="<?= base_url('Lap_benih') ?>">Laporan Pembenihan</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Laporan Pembesaran</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Laporan Penangkapan</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Laporan Penegelolaan</a>
