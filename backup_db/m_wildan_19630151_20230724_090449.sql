@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: m_wildan_19630151
 -- ------------------------------------------------------
--- Server version	8.0.33-0ubuntu0.22.04.2
+-- Server version	8.0.33-0ubuntu0.23.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,36 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `detail_tangkap`
+--
+
+DROP TABLE IF EXISTS `detail_tangkap`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `detail_tangkap` (
+  `id_detail_tangkap` int NOT NULL AUTO_INCREMENT,
+  `id_perikanan_tangkap` int NOT NULL,
+  `id_ikan` int NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id_detail_tangkap`),
+  KEY `id_ikan` (`id_ikan`),
+  KEY `id_perikanan_tangkap` (`id_perikanan_tangkap`),
+  CONSTRAINT `detail_tangkap_ibfk_1` FOREIGN KEY (`id_ikan`) REFERENCES `tb_ikan` (`id_ikan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `detail_tangkap_ibfk_2` FOREIGN KEY (`id_perikanan_tangkap`) REFERENCES `tb_perikanan_tangkap` (`id_perikanan_tangkap`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `detail_tangkap`
+--
+
+LOCK TABLES `detail_tangkap` WRITE;
+/*!40000 ALTER TABLE `detail_tangkap` DISABLE KEYS */;
+INSERT INTO `detail_tangkap` VALUES (6,1,2,'2023-07-23 13:51:01'),(7,1,3,'2023-07-23 13:51:04');
+/*!40000 ALTER TABLE `detail_tangkap` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tb_berita`
@@ -224,13 +254,18 @@ DROP TABLE IF EXISTS `tb_pengolahan_ikan`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_pengolahan_ikan` (
   `id_pengolahan_ikan` int NOT NULL AUTO_INCREMENT,
-  `nama` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `alamat` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `id_ikan` int DEFAULT NULL,
-  `produk_yg_dihasilkan` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `proses` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id_pengolahan_ikan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_ikan` int NOT NULL,
+  `tanggal_olah` date NOT NULL,
+  `jenis_olah` varchar(225) COLLATE utf8mb4_general_ci NOT NULL,
+  `jumlah_olah` int NOT NULL,
+  `durasi_olah` varchar(225) COLLATE utf8mb4_general_ci NOT NULL,
+  `catatan` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`id_pengolahan_ikan`),
+  KEY `id_ikan` (`id_ikan`),
+  CONSTRAINT `tb_pengolahan_ikan_ibfk_1` FOREIGN KEY (`id_ikan`) REFERENCES `tb_ikan` (`id_ikan`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,6 +274,7 @@ CREATE TABLE `tb_pengolahan_ikan` (
 
 LOCK TABLES `tb_pengolahan_ikan` WRITE;
 /*!40000 ALTER TABLE `tb_pengolahan_ikan` DISABLE KEYS */;
+INSERT INTO `tb_pengolahan_ikan` VALUES (4,2,'2023-07-24','Kalengan',636,'253','-','2023-07-24 01:02:53','2023-07-24 01:02:53');
 /*!40000 ALTER TABLE `tb_pengolahan_ikan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,13 +320,16 @@ DROP TABLE IF EXISTS `tb_perikanan_tangkap`;
 CREATE TABLE `tb_perikanan_tangkap` (
   `id_perikanan_tangkap` int NOT NULL AUTO_INCREMENT,
   `jenis_perairan` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+  `lokasi` varchar(225) COLLATE utf8mb4_general_ci NOT NULL,
   `tanggal` date DEFAULT NULL,
   `jenis_kapal` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
-  `alat_penangkap_ikan` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
-  `id_ikan` int DEFAULT NULL,
-  `jumlah_kg` int DEFAULT NULL,
+  `alat_tangkap` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `id_user` int DEFAULT NULL,
+  `jumlah_tangkap` int DEFAULT NULL,
+  `keterangan` text COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
   PRIMARY KEY (`id_perikanan_tangkap`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,6 +338,7 @@ CREATE TABLE `tb_perikanan_tangkap` (
 
 LOCK TABLES `tb_perikanan_tangkap` WRITE;
 /*!40000 ALTER TABLE `tb_perikanan_tangkap` DISABLE KEYS */;
+INSERT INTO `tb_perikanan_tangkap` VALUES (1,'Air Tawar','Danau Durian','2023-07-23','Perahu Mini','Jaring',9,193,'Molestiae maiores ex quae. ','2023-07-23 11:59:20'),(2,'Air Tawar','Danau Seran','2023-07-23','Kapal Medium','Pancingan',8,625,'Explicabo esse atque.','2023-07-23 14:03:18');
 /*!40000 ALTER TABLE `tb_perikanan_tangkap` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -382,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-21 11:16:31
+-- Dump completed on 2023-07-24  9:04:50
