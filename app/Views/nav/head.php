@@ -84,18 +84,26 @@
                                         <a class="nav-link" href="<?= base_url('Con_penangkapan') ?>">Perikanan tangkap</a>
                                         <a class="nav-link" href="<?= base_url('Con_olah') ?>">Pengolahan Ikan</a>
                                         <a class="nav-link" href="<?= base_url('Con_transaksi') ?>">Keluar Masuk Ikan</a>
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Berita</a>
+                                        <a class="nav-link" href="<?= base_url('Con_berita') ?>">Berita</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                    Data User
+                                    Report Data
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Pengelola Admin</a>
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Data User</a>
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Report</a>
+                                        <a class="nav-link" href="<?= base_url('Lap_ikan') ?>">Laporan Data Ikan</a>
+                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Data User</a>
+                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Data Pasar</a>
+                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Data Penjual</a>
+                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Harga Ikan</a>
+                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Pembenihan</a>
+                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Pembesaran</a>
+                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Penangkapan</a>
+                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Penegelolaan</a>
+                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Keluar/Masuk</a>
+                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Berita</a>
                                     </nav>
                                 </div>
                             </nav>

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Mod_ikan extends Model
+class Mod_berita extends Model
 {
     protected $table = 'tb_berita';
     protected $primaryKey = 'id_berita';
