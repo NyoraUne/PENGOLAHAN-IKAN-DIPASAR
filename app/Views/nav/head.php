@@ -83,7 +83,7 @@
                                         <a class="nav-link" href="<?= base_url('Con_pembesaran') ?>">Pembesaran</a>
                                         <a class="nav-link" href="<?= base_url('Con_penangkapan') ?>">Perikanan tangkap</a>
                                         <a class="nav-link" href="<?= base_url('Con_olah') ?>">Pengolahan Ikan</a>
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Keluar Masuk Ikan</a>
+                                        <a class="nav-link" href="<?= base_url('Con_transaksi') ?>">Keluar Masuk Ikan</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Berita</a>
                                     </nav>
                                 </div>
