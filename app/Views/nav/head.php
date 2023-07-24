@@ -94,7 +94,7 @@
                                 <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="<?= base_url('Lap_ikan') ?>">Laporan Data Ikan</a>
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Data User</a>
+                                        <a class="nav-link" href="<?= base_url('Lap_user') ?>">Laporan Data User</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Laporan Data Pasar</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Laporan Data Penjual</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Laporan Harga Ikan</a>

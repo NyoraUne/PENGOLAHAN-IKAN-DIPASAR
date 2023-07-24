@@ -2,23 +2,23 @@
 
 namespace App\Controllers;
 
-use App\Models\Mod_ikan;
+use App\Models\Mod_user;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Dompdf\Output\Options as OutputOptions;
 use Dompdf\Output\DefaultRenderer;
 
 
-class Lap_ikan extends BaseController
+class Lap_user extends BaseController
 
 
 {
     protected $session;
-    protected $Mod_ikan;
+    protected $Mod_user;
     public function __construct()
     {
         $this->session = session();
-        $this->Mod_ikan = new Mod_ikan();
+        $this->Mod_user = new Mod_user();
     }
 
     public function index()
@@ -34,11 +34,11 @@ class Lap_ikan extends BaseController
         }
         $data = [
             'title' => 'Nama',
-            'type' => 'Laporan Ikan',
-            'head' => 'Data Laporan Ikan',
+            'type' => 'Laporan User',
+            'head' => 'Data Laporan User',
         ];
 
-        return view('admin/Laporan/ikan/index', $data);
+        return view('admin/Laporan/user/index', $data);
     }
     function filter()
     {
@@ -49,41 +49,41 @@ class Lap_ikan extends BaseController
         // dd($tgl2, $tgl1);
 
         if (empty($tgl1) && empty($tgl2)) {
-            $ikan = $this->Mod_ikan->orderBy('created_at_ikan', 'desc')->findAll();
+            $var = $this->Mod_user->orderBy('created_at', 'desc')->findAll();
             $msg = '';
         } else if (empty($tgl1)) {
-            $ikan = $this->Mod_ikan
-                ->where('created_at_ikan <=', $tgl2)
-                ->orderBy('created_at_ikan', 'desc')
+            $var = $this->Mod_user
+                ->where('created_at <=', $tgl2)
+                ->orderBy('created_at', 'desc')
                 ->findAll();
             $msg = 'Menampilkan Semua Data Di Bawah Tanggal : ' . $tgl2;
         } else if (empty($tgl2)) {
-            $ikan = $this->Mod_ikan
-                ->where('created_at_ikan >=', $tgl1)
-                ->orderBy('created_at_ikan', 'desc')
+            $var = $this->Mod_user
+                ->where('created_at >=', $tgl1)
+                ->orderBy('created_at', 'desc')
                 ->findAll();
             $msg = 'Menampilkan Semua Data Di Atas Tanggal : ' . $tgl1;
         } else {
             // Jika input tanggal tidak kosong, terapkan filter
-            $ikan = $this->Mod_ikan
-                ->where('created_at_ikan >=', $tgl1)
-                ->where('created_at_ikan <=', $tgl2)
-                ->orderBy('created_at_ikan', 'desc')
+            $var = $this->Mod_user
+                ->where('created_at >=', $tgl1)
+                ->where('created_at <=', $tgl2)
+                ->orderBy('created_at', 'desc')
                 ->findAll();
             $msg = 'Menampilkan Semua Data Di Antara Tanggal ' . $tgl1 . ' Sampai ' . $tgl2 . '.';
         }
 
         $data = [
-            'ikan' => $ikan,
+            'user' => $var,
             'msg' => $msg,
-            'title' => 'Laporan Data Ikan',
+            'title' => 'Laporan Data User',
         ];
         // dd($data);
 
         // echo view('user/laporan/dataikan', $data);
 
         // return view('admin/Laporan/ikan/cetak');
-        $html = view('admin/Laporan/ikan/cetak', $data);
+        $html = view('admin/Laporan/user/cetak', $data);
         $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'landscape');

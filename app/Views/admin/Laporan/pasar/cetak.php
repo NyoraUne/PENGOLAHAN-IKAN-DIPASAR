@@ -39,18 +39,24 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama Ikan</th>
-                <th>Habitat</th>
-                <th>Deskripsi Ikan</th>
+                <th>Nik</th>
+                <th>Nama</th>
+                <th>Tempat / Tanggal Lahir</th>
+                <th>Jenis Kelamin</th>
+                <th>Alamat</th>
+                <th>Bergabung</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($ikan as $index => $item) : ?>
+            <?php foreach ($user as $index => $item) : ?>
                 <tr>
                     <td><?= $index + 1; ?></td>
-                    <td><?= $item['nama_ikan']; ?></td>
-                    <td><?= $item['habitat']; ?></td>
-                    <td><?= $item['deskripsi_ikan']; ?></td>
+                    <td><?= $item['nik_user']; ?></td>
+                    <td><?= $item['nama_user']; ?></td>
+                    <td><?= $item['lahir_user']; ?> <?= $item['tgllahir_user']; ?></td>
+                    <td><?= $item['jekel_user']; ?></td>
+                    <td><?= $item['alamat_user']; ?></td>
+                    <td><?= $item['created_at']; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
