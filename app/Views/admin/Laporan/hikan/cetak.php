@@ -39,20 +39,20 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama Toko</th>
-                <th>Nama Pemilik</th>
-                <th>Kontak Toko</th>
-                <th>Pasar</th>
+                <th>Nama Ikan</th>
+                <th>Nama Pasar</th>
+                <th>Rata-Rata Harga Ikan</th>
+                <th>Terakhir Di Update</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($penjual as $index => $item) : ?>
+            <?php foreach ($hikan as $index => $item) : ?>
                 <tr>
                     <td><?= $index + 1; ?></td>
-                    <td><?= $item['nama_toko']; ?></td>
-                    <td><?= $item['nama_user']; ?></td>
-                    <td><?= $item['kontak_toko']; ?></td>
+                    <td><?= $item['nama_ikan']; ?></td>
                     <td><?= $item['nama_pasar']; ?></td>
+                    <td><?= $item['harga']; ?></td>
+                    <td><?= $item['update_at']; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

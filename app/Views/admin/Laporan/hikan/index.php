@@ -4,7 +4,7 @@
     <div class="card-body">
         Filter Laporan
         <hr>
-        <form action="<?= base_url('Lap_penjual/filter'); ?>" method="post">
+        <form action="<?= base_url('Lap_hikan/filter'); ?>" method="post">
             <div class="row">
                 <div class="col-5">
                     <!-- input data -->

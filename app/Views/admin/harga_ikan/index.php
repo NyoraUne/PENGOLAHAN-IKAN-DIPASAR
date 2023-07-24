@@ -36,7 +36,7 @@
                         <select id="pasar" name="id_pasar" class="form-select" required>
                             <option value="" selected></option>
                             <?php foreach ($pasar as $pasar) : ?>
-                                <option value="<?= $pasar['id_pasar']; ?>">ID.<?= $pasar['id_pasar']; ?> - <?= $pasar['nama_pasar']; ?> - <?= $pasar['nama_penjual']; ?></option>
+                                <option value="<?= $pasar['id_pasar']; ?>">ID.<?= $pasar['id_pasar']; ?> - <?= $pasar['nama_pasar']; ?> </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -77,7 +77,7 @@
                     <tr>
                         <td><?= $no++; ?></td>
                         <td><?= $harga['nama_ikan']; ?></td>
-                        <td><?= $harga['nama_pasar']; ?> - <?= $harga['nama_penjual']; ?></td>
+                        <td><?= $harga['nama_pasar']; ?> </td>
                         <td><?= $harga['harga']; ?></td>
                         <td><?= $harga['volume']; ?></td>
                         <?php

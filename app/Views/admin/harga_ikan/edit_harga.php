@@ -22,11 +22,10 @@ ini edit harga ikan dengan id: <?= $harga['id_harga_ikan']; ?>
                 </div>
                 <div class="col">
                     <!-- input data -->
-                    Nama Pasar & Pemilik Toko :
+                    Nama Pasar :
                     <div class="input-group mb-2">
-                        <span class="input-group-text">@</span>
-                        <input name="id_pasar" type="text" class="form-control" value="<?= $harga['id_pasar']; ?> - <?= $harga['nama_penjual']; ?>" hidden>
-                        <input type="text" class="form-control" value="<?= $harga['nama_pasar']; ?> - <?= $harga['nama_penjual']; ?>" disabled>
+                        <input name="id_pasar" type="text" class="form-control" value="<?= $harga['id_pasar']; ?>" hidden>
+                        <input type="text" class="form-control" value="<?= $harga['nama_pasar']; ?>" disabled>
                     </div>
                     <!-- input data -->
                     Volume Ikan :
