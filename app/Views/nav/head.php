@@ -101,7 +101,7 @@
                                         <a class="nav-link" href="<?= base_url('Lap_benih') ?>">Laporan Pembenihan</a>
                                         <a class="nav-link" href="<?= base_url('Lap_pembesaran') ?>">Laporan Pembesaran</a>
                                         <a class="nav-link" href="<?= base_url('Lap_tangkap') ?>">Laporan Penangkapan</a>
-                                        <a class="nav-link" href="<?= base_url('/') ?>">Laporan Penegelolaan</a>
+                                        <a class="nav-link" href="<?= base_url('Lap_kelola') ?>">Laporan Penegelolaan</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Laporan Keluar/Masuk</a>
                                         <a class="nav-link" href="<?= base_url('/') ?>">Laporan Berita</a>
                                     </nav>
