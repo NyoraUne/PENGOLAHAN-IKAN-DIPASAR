@@ -62,7 +62,7 @@ class Auth extends BaseController
         $this->Mod_login->insert([
             'username' => $data['username'],
             'password' => $password,
-            'hak_akses' => 1 //1 = admin, 2 = user
+            'hak_akses' => 2 //1 = admin, 2 = user
         ]);
 
         //arahkan ke halaman login

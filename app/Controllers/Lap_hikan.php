@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Mod_detail_harga;
 use App\Models\Mod_hargaikan;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -15,10 +16,12 @@ class Lap_hikan extends BaseController
 {
     protected $session;
     protected $Mod_hargaikan;
+    protected $Mod_detail_harga;
     public function __construct()
     {
         $this->session = session();
         $this->Mod_hargaikan = new Mod_hargaikan();
+        $this->Mod_detail_harga = new Mod_detail_harga();
     }
 
     public function index()
@@ -50,43 +53,62 @@ class Lap_hikan extends BaseController
 
         if (empty($tgl1) && empty($tgl2)) {
             $var = $this->Mod_hargaikan
-                ->join('tb_ikan', 'tb_ikan.id_ikan=tb_harga_ikan.id_ikan')
                 ->join('tb_pasar', 'tb_pasar.id_pasar=tb_harga_ikan.id_pasar')
-                ->orderBy('tb_harga_ikan.update_at', 'desc')->findAll();
+                ->findAll();
+
+            $var2 = $this->Mod_detail_harga
+                ->join('tb_ikan', 'tb_ikan.id_ikan = detail_harga.id_ikan')
+                ->orderBy('detail_harga.created_at', 'desc')->findAll();
+
+
 
             $msg = '';
         } else if (empty($tgl1)) {
             $var = $this->Mod_hargaikan
-                ->join('tb_ikan', 'tb_ikan.id_ikan=tb_harga_ikan.id_ikan')
                 ->join('tb_pasar', 'tb_pasar.id_pasar=tb_harga_ikan.id_pasar')
-                ->where('tb_harga_ikan.update_at <=', $tgl2)
-                ->orderBy('tb_harga_ikan.update_at', 'desc')
                 ->findAll();
+
+            $var2 = $this->Mod_detail_harga
+                ->join('tb_ikan', 'tb_ikan.id_ikan = detail_harga.id_ikan')
+                ->where('detail_harga.created_at <=', $tgl2)
+                ->findAll();
+
             $msg = 'Menampilkan Semua Data Di Bawah Tanggal : ' . $tgl2;
         } else if (empty($tgl2)) {
             $var = $this->Mod_hargaikan
-                ->join('tb_ikan', 'tb_ikan.id_ikan=tb_harga_ikan.id_ikan')
                 ->join('tb_pasar', 'tb_pasar.id_pasar=tb_harga_ikan.id_pasar')
-                ->where('tb_harga_ikan.update_at >=', $tgl1)
-                ->orderBy('tb_harga_ikan.update_at', 'desc')
                 ->findAll();
+
+            $var2 = $this->Mod_detail_harga
+                ->join('tb_ikan', 'tb_ikan.id_ikan = detail_harga.id_ikan')
+                ->where('detail_harga.created_at >=', $tgl1)
+                ->findAll();
+
             $msg = 'Menampilkan Semua Data Di Atas Tanggal : ' . $tgl1;
         } else {
             // Jika input tanggal tidak kosong, terapkan filter
             $var = $this->Mod_hargaikan
-                ->join('tb_ikan', 'tb_ikan.id_ikan=tb_harga_ikan.id_ikan')
                 ->join('tb_pasar', 'tb_pasar.id_pasar=tb_harga_ikan.id_pasar')
-                ->where('tb_harga_ikan.update_at >=', $tgl1)
-                ->where('tb_harga_ikan.update_at <=', $tgl2)
-                ->orderBy('tb_harga_ikan.update_at', 'desc')
                 ->findAll();
+
+            $var2 = $this->Mod_detail_harga
+                ->join('tb_ikan', 'tb_ikan.id_ikan = detail_harga.id_ikan')
+                ->where('detail_harga.created_at <=', $tgl2)
+                ->where('detail_harga.created_at >=', $tgl1)
+                ->findAll();
+
             $msg = 'Menampilkan Semua Data Di Antara Tanggal ' . $tgl1 . ' Sampai ' . $tgl2 . '.';
         }
+
+        // dd($var2);
+
+
 
         $data = [
             'hikan' => $var,
             'msg' => $msg,
             'title' => 'Laporan Data Harga Ikan',
+            'harga' => $var2,
         ];
         // dd($data);
 

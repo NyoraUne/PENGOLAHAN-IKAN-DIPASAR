@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Mod_berita;
 
-class User extends BaseController
+class User_view extends BaseController
 {
     protected $session;
     protected $Mod_berita;
@@ -14,21 +14,25 @@ class User extends BaseController
         $this->Mod_berita = new Mod_berita();
     }
 
-    public function index()
+    public function index($id)
     {
         //cek apakah ada session bernama isLogin
         if (!$this->session->has('isLogin')) {
             return redirect()->to('/auth/login');
         }
 
-        // $berita = $this->Mod_berita->paginate(2);
-        // $pager = $this->Mod_berita->pager();
+        $berita = $this->Mod_berita
+
+            ->where('id_berita', $id)
+            ->first();
+        // $user = $this->Mod_user->where('id_user', $id)->first();
+
         $data = [
-            'berita' => $this->Mod_berita->paginate(2, 'tb_berita'),
-            'pager' => $this->Mod_berita->pager,
+            'berita' => $berita,
 
         ];
+        // dd($data, $id);
 
-        return view('user/index', $data);
+        return view('user/view', $data);
     }
 }

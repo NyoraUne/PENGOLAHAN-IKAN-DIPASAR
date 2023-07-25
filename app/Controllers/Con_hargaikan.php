@@ -5,12 +5,15 @@ namespace App\Controllers;
 use App\Models\Mod_hargaikan;
 use App\Models\Mod_ikan;
 use App\Models\Mod_pasar;
+use App\Models\Mod_detail_harga;
+
 
 class Con_hargaikan extends BaseController
 {
     protected $session;
     protected $Mod_hargaikan;
     protected $Mod_ikan;
+    protected $Mod_detail_harga;
     protected $Mod_pasar;
 
     public function __construct()
@@ -19,6 +22,7 @@ class Con_hargaikan extends BaseController
 
         $this->Mod_hargaikan = new Mod_hargaikan();
         $this->Mod_ikan = new Mod_ikan();
+        $this->Mod_detail_harga = new Mod_detail_harga();
         $this->Mod_pasar = new Mod_pasar();
     }
 
@@ -39,7 +43,6 @@ class Con_hargaikan extends BaseController
 
         $val = $this->Mod_hargaikan
             ->select('*')
-            ->join('tb_ikan', 'tb_ikan.id_ikan = tb_harga_ikan.id_ikan', 'left')
             ->join('tb_pasar', 'tb_pasar.id_pasar = tb_harga_ikan.id_pasar', 'left')
             ->orderBy('update_at', 'desc')
             ->findAll();
@@ -62,11 +65,10 @@ class Con_hargaikan extends BaseController
         $input = $this->request->getPost();
 
         $data = [
-            'id_ikan' => $input['id_ikan'],
-            'harga' => $input['harga'],
             'id_pasar' => $input['id_pasar'],
-            'volume' => $input['volume'],
+            'map' => $input['map'],
         ];
+        // dd($data);
 
         $status = $this->Mod_hargaikan->insert($data);
 
@@ -93,21 +95,30 @@ class Con_hargaikan extends BaseController
         }
         return redirect()->back();
     }
-    function edit_harga()
+    function edit_harga($id)
     {
 
         $val = $this->Mod_hargaikan
+            ->where('id_harga_ikan', $id)
             ->select('*')
-            ->join('tb_ikan', 'tb_ikan.id_ikan = tb_harga_ikan.id_ikan', 'left')
             ->join('tb_pasar', 'tb_pasar.id_pasar = tb_harga_ikan.id_pasar', 'left')
             ->orderBy('update_at', 'desc')
             ->first();
+        $ikan = $this->Mod_ikan->findAll();
+
+        $detailharga = $this->Mod_detail_harga
+            ->where('id_harga_ikan', $id)
+            ->join('tb_ikan', 'tb_ikan.id_ikan = detail_harga.id_ikan')
+            ->findAll();
+        // dd($detailharga);
 
         $data = [
             'title' => 'Nama',
             'head' => 'Form Edit Harga Ikan',
-            'type' => 'a',
-            'harga' => $val
+            'type' => 'Edit Harga Ikan',
+            'harga' => $val,
+            'ikan' => $ikan,
+            'detailharga' => $detailharga,
         ];
 
         return view('admin/harga_ikan/edit_harga', $data);
@@ -117,9 +128,7 @@ class Con_hargaikan extends BaseController
         $input = $this->request->getPost();
         $data = [
             'id_pasar' => $input['id_pasar'],
-            'id_ikan' => $input['id_ikan'],
-            'harga' => $input['harga'],
-            'volume' => $input['volume'],
+            'map' => $input['map'],
         ];
 
         $status = $this->Mod_hargaikan->update($id, $data);
@@ -130,6 +139,42 @@ class Con_hargaikan extends BaseController
             // Jika data gagal disimpan
             $this->session->setFlashdata('error_edit', 'Terjadi kesalahan saat menyimpan data.');
         }
-        return redirect()->to('Con_hargaikan/index');
+        return redirect()->back();
+    }
+    function simpan_ikan($id)
+    {
+        $var = $this->request->getPost();
+
+        // dd($var, $id);
+        $data = [
+            'id_harga_ikan' => $id,
+            'id_ikan' => $var['id_ikan'],
+            'harga' => $var['harga'],
+            'banyak' => $var['banyak'],
+        ];
+
+        // dd($data);
+        $status = $this->Mod_detail_harga->insert($data);
+        if ($status) {
+            // Jika data berhasil disimpan
+            $this->session->setFlashdata('success_edit', 'Data berhasil disimpan.');
+        } else {
+            // Jika data gagal disimpan
+            $this->session->setFlashdata('error_edit', 'Terjadi kesalahan saat menyimpan data.');
+        }
+        return redirect()->back();
+    }
+    function hapus_ikan($id)
+    {
+        // dd($id);
+        $status = $this->Mod_detail_harga->where('id_detail_harga', $id)->delete();
+        if ($status) {
+            // Jika data berhasil disimpan
+            $this->session->setFlashdata('success_hapus', 'Data berhasil disimpan.');
+        } else {
+            // Jika data gagal disimpan
+            $this->session->setFlashdata('error_hapus', 'Terjadi kesalahan saat menyimpan data.');
+        }
+        return redirect()->back();
     }
 }
