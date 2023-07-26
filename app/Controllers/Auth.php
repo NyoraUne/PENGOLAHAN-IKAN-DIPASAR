@@ -90,6 +90,7 @@ class Auth extends BaseController
                 //jika benar, arahkan user masuk ke aplikasi 
                 $sessLogin = [
                     'isLogin' => true,
+                    'id_login' => $user['id_login'],
                     'username' => $user['username'],
                     'hak_akses' => $user['hak_akses']
                 ];

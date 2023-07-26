@@ -30,14 +30,21 @@
     </thead>
     <tbody>
         <?php $no = 1; ?>
-        <?php foreach ($berita as $berita) : ?>
+        <?php foreach ($berita as $berita_item) : ?>
             <tr>
                 <td><?= $no++; ?></td>
-                <td><?= $berita['created_at']; ?></td>
-                <td><?= $berita['judul']; ?></td>
-                <td><?= strlen($berita['isi_berita']) > 90 ? substr($berita['isi_berita'], 0, 90) . '...' : $berita['isi_berita']; ?></td>
+                <td><?= $berita_item['created_at']; ?></td>
+                <td><?= $berita_item['judul']; ?></td>
+                <?php
+                // Cek apakah 'isi_berita' ada dalam array $berita_item sebelum mengaksesnya
+                $isi_berita_tanpa_html = isset($berita_item['isi_berita']) ? strip_tags($berita_item['isi_berita']) : '';
+
+                // Potong isi_berita jika lebih dari 90 karakter
+                $potongan_berita = strlen($isi_berita_tanpa_html) > 90 ? substr($isi_berita_tanpa_html, 0, 90) . '...' : $isi_berita_tanpa_html;
+                ?>
+                <td><?= $potongan_berita; ?></td>
                 <td>
-                    <a href="<?= base_url('Con_berita/reviw/' . $berita['id_berita']); ?>" class="btn btn-outline-info btn-ssm">Reviw</a>
+                    <a href="<?= base_url('Con_berita/reviw/' . $berita_item['id_berita']); ?>" class="btn btn-outline-info btn-ssm">Reviw</a>
                     <a href="" class="btn btn-outline-danger btn-ssm">Hapus</a>
                 </td>
             </tr>

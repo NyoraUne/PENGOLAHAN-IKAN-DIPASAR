@@ -35,7 +35,7 @@
     }
 </style>
 <?= $this->include('alert/index'); ?>
-<img src="<?= base_url('src/img/'); ?>image.jpg" class="img">
+<img src="<?= base_url('src/img/'); ?>kantor.jpeg" class="img">
 <div class="card">
     <div class="card-body">
         <div class="row">

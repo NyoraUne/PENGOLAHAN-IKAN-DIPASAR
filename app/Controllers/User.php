@@ -24,7 +24,7 @@ class User extends BaseController
         // $berita = $this->Mod_berita->paginate(2);
         // $pager = $this->Mod_berita->pager();
         $data = [
-            'berita' => $this->Mod_berita->paginate(2, 'tb_berita'),
+            'berita' => $this->Mod_berita->orderBy('created_at', 'desc')->paginate(2, 'tb_berita'),
             'pager' => $this->Mod_berita->pager,
 
         ];

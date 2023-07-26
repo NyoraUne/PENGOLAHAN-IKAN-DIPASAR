@@ -69,7 +69,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Nama',
             'type' => 'Dashboard',
-            'head' => 'SISTEM INFORMASI KETERSEDIAAN IKAN DI PASAR PADA KANTOR DINAS PERIKANAN (DISKAN) RANTAU KEBUPATEN TAPIN BERBASIS WEB',
+            'head' => 'SISTEM INFORMASI KETERSEDIAAN DAN PENGOLAHAN IKAN DIPASAR PADA KANTOR DINAS PERIKANAN(DISKAN) RANTAU KABUPATEN TAPIN',
             'user' => $user,
             'ikan' => $ikan,
             'pasar' => $pasar,

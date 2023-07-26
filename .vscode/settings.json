@@ -5,10 +5,7 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    "[!a]*/**": true,
-    "a[!p]*/**": true,
-    "ap[!p]*/**": true
+    "**/Thumbs.db": true
   },
   "colorTabs.config": [
     {

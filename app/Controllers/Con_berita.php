@@ -26,6 +26,7 @@ class Con_berita extends BaseController
             return redirect()->to('/user');
         }
         $berita = $this->Mod_berita->findAll();
+
         $data = [
             'title' => 'Nama',
             'type' => 'Form Berita',
